@@ -4,11 +4,12 @@ async function main() {
   const result = await agent.verifyCredential({
     credential: {
       "credentialSubject": {
-        "you": "Rock",
-        "id": "did:web:example.com"
+        "contractAddress": "0x00000A",
+        "tokenId": "1",
+        "issuerName": "osaka expo"
       },
       "issuer": {
-        "id": "did:ethr:goerli:0x0350eeeea1410c5b152f1a88e0ffe8bb8a0bc3df868b740eb2352b1dbf93b59c16"
+        "id": "did:ethr:goerli:0x0216f17afc876c83d0d69d8fb3f8ea86da823da1b32043538226fe8f4dda05117b"
       },
       "type": [
         "VerifiableCredential"
@@ -16,10 +17,10 @@ async function main() {
       "@context": [
         "https://www.w3.org/2018/credentials/v1"
       ],
-      "issuanceDate": "2022-10-28T11:54:22.000Z",
+      "issuanceDate": "2023-07-25T13:47:35.000Z",
       "proof": {
         "type": "JwtProof2020",
-        "jwt": "eyJhbGciOiJFUzI1NksiLCJ0eXAiOiJKV1QifQ.eyJ2YyI6eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvMjAxOC9jcmVkZW50aWFscy92MSJdLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIl0sImNyZWRlbnRpYWxTdWJqZWN0Ijp7InlvdSI6IlJvY2sifX0sInN1YiI6ImRpZDp3ZWI6ZXhhbXBsZS5jb20iLCJuYmYiOjE2NjY5NTgwNjIsImlzcyI6ImRpZDpldGhyOmdvZXJsaToweDAzNTBlZWVlYTE0MTBjNWIxNTJmMWE4OGUwZmZlOGJiOGEwYmMzZGY4NjhiNzQwZWIyMzUyYjFkYmY5M2I1OWMxNiJ9.EPeuQBpkK13V9wu66SLg7u8ebY2OS8b2Biah2Vw-RI-Atui2rtujQkVc2t9m1Eqm4XQFECfysgQBdWwnSDvIjw"
+        "jwt": "eyJhbGciOiJFUzI1NksiLCJ0eXAiOiJKV1QifQ.eyJ2YyI6eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvMjAxOC9jcmVkZW50aWFscy92MSJdLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIl0sImNyZWRlbnRpYWxTdWJqZWN0Ijp7ImNvbnRyYWN0QWRkcmVzcyI6IjB4MDAwMDBBIiwidG9rZW5JZCI6IjEiLCJpc3N1ZXJOYW1lIjoib3Nha2EgZXhwbyJ9fSwibmJmIjoxNjkwMjkyODU1LCJpc3MiOiJkaWQ6ZXRocjpnb2VybGk6MHgwMjE2ZjE3YWZjODc2YzgzZDBkNjlkOGZiM2Y4ZWE4NmRhODIzZGExYjMyMDQzNTM4MjI2ZmU4ZjRkZGEwNTExN2IifQ.LEmKGHJ0yUP2YYNETKSkNhS6CULNx_YrH-tMx9Ok9ZFKLewfapaQFuTv9Q4geLsTXFhXMIywk7OtQMOoryvK_g"
       }
     }
   })

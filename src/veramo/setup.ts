@@ -19,6 +19,8 @@ import { KeyManagementSystem, SecretBox } from '@veramo/kms-local'
 // W3C Verifiable Credential plugin
 import { CredentialPlugin } from '@veramo/credential-w3c'
 
+import { Web3KeyManagementSystem } from '@veramo/kms-web3'
+
 // Custom resolvers
 import { DIDResolverPlugin } from '@veramo/did-resolver'
 import { Resolver } from 'did-resolver'
@@ -30,6 +32,8 @@ import { Entities, KeyStore, DIDStore, IDataStoreORM, PrivateKeyStore, migration
 
 // TypeORM is installed with `@veramo/data-store`
 import { DataSource } from 'typeorm'
+
+import { ethers } from 'ethers';
 
 // This will be the name for the local sqlite database for demo purposes
 const DATABASE_FILE = 'database.sqlite'
@@ -57,6 +61,11 @@ const KMS_SECRET_KEY =
         store: new KeyStore(dbConnection),
         kms: {
           local: new KeyManagementSystem(new PrivateKeyStore(dbConnection, new SecretBox(KMS_SECRET_KEY))),
+          /** 
+          web3: new Web3KeyManagementSystem({
+            ethers: createEthersProvider()
+          })
+          */
         },
       }),
       new DIDManager({
