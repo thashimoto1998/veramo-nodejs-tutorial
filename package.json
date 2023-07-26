@@ -21,9 +21,9 @@
     "@veramo/key-manager": "^5.1.2",
     "@veramo/kms-local": "^5.1.2",
     "@veramo/kms-web3": "^5.1.2",
+    "ethers": "^5.7.0",
     "ethr-did-resolver": "^7.0.2",
     "sqlite3": "^5.1.2",
-    "ethers": "^5.7.0",
     "web-did-resolver": "^2.0.21"
   },
   "type": "module"

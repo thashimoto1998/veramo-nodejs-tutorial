@@ -9,7 +9,7 @@ async function main() {
       credentialSubject: {
         contractAddress: '0x00000A',
         tokenId: '1',
-        issuerName: 'osaka expo'
+        issuerName: 'vwbl team'
       },
     },
     proofFormat: 'jwt',
