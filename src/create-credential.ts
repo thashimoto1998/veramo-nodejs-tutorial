@@ -5,8 +5,6 @@ import { NftContract } from './blockchain/nftContract.js';
 dotenv.config();
 
 async function main() {
-  //const identifier = await agent.didManagerGetByAlias({ alias: 'alice' })
-
   const verifiableCredential = await agent.createVerifiableCredential({
      credential: {
        issuer: { id:  'did:ethr:goerli:0x0304ec43e1510029d2bc230d41c17b27a9ac3f132dc254d3453e1f0b6a21f2fdd1'},
