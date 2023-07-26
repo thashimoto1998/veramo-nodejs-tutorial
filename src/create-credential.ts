@@ -5,20 +5,22 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 async function main() {
-  // const identifier = await agent.didManagerGetByAlias({ alias: 'alice' })
+  //const identifier = await agent.didManagerGetByAlias({ alias: 'alice' })
 
-  // const verifiableCredential = await agent.createVerifiableCredential({
-  //   credential: {
-  //     issuer: { id: identifier.did },
-  //     credentialSubject: {
-  //       contractAddress: '0x00000A',
-  //       tokenId: '1',
-  //       issuerName: 'osaka expo'
-  //     },
-  //   },
-  //   proofFormat: 'jwt',
-  // })
+  const verifiableCredential = await agent.createVerifiableCredential({
+     credential: {
+       issuer: { id:  'did:ethr:goerli:0x0361fe5fcf149e7abdb8bcfd624bfc8aa2aa71f90b9dbfc3d9c933caf36fad0d3c'},
+       credentialSubject: {
+        contractAddress: '0x00000A',
+        tokenId: '1',
+        issuerName: 'osaka expo'
+      },
+    },
+    proofFormat: 'jwt',
+  })
+  console.log(verifiableCredential);
 
+  /** 
   const verifiableCredential = {
     issuer: 'aaa',
     proofFormat: 'jwt'
@@ -39,6 +41,7 @@ async function main() {
   const fetchedVC = (await axios.get(metadata.verifiableCredentialUrl).catch(() => undefined))?.data;
   console.log(fetchedVC);
   console.log(JSON.parse(fetchedVC));
+  */
 }
 
 main().catch(console.log)
