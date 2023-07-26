@@ -6,7 +6,6 @@ async function main() {
     type: 'Secp256k1',
   });
   console.log("key:", key);
-  //key.meta = { key.meta.algorithms, 'blockchainAccountId': 'eip155:5:0xaa5709bEE14f391401c0Fe23b2a1832fb2313AFB' }
   key.meta!.blockchainAccountId = 'eip155:5:0xaa5709bEE14f391401c0Fe23b2a1832fb2313AFB'
   console.log("key:", key);
 
