@@ -2,9 +2,9 @@ import { agent } from './veramo/setup.js'
 
 async function main() {
   const didDocument = await agent.resolveDid({
-    didUrl: 'did:ethr:goerli:0x0216f17afc876c83d0d69d8fb3f8ea86da823da1b32043538226fe8f4dda05117b'
+    didUrl: 'did:ethr:goerli:0x0361fe5fcf149e7abdb8bcfd624bfc8aa2aa71f90b9dbfc3d9c933caf36fad0d3c'
   })
-  console.log(didDocument)
+  console.log(didDocument.didDocument)
 }
 
 main().catch(console.log)

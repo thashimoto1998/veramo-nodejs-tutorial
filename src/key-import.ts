@@ -3,6 +3,7 @@ import { TKeyType } from '@veramo/core'
 
 async function main() {
   const keyData = {
+    alias: 'charlie',
     kid: 'myImportedKey',
     kms: 'local',
     type: <TKeyType>'Ed25519',

@@ -33,13 +33,13 @@ import { Entities, KeyStore, DIDStore, IDataStoreORM, PrivateKeyStore, migration
 // TypeORM is installed with `@veramo/data-store`
 import { DataSource } from 'typeorm'
 
-import { ethers } from 'ethers';
+import { Wallet, ethers } from 'ethers';
 
 // This will be the name for the local sqlite database for demo purposes
 const DATABASE_FILE = 'database.sqlite'
 
 // You will need to get a project ID from infura https://www.infura.io
-const INFURA_PROJECT_ID = '3586660d179141e3801c3895de1c2eba'
+const INFURA_PROJECT_ID = '5de7c7233c9a4de79a998a345f9c4534'
 
 // This will be the secret key for the KMS
 const KMS_SECRET_KEY =
@@ -76,10 +76,16 @@ const KMS_SECRET_KEY =
             defaultKms: 'local',
             network: 'goerli',
             rpcUrl: 'https://goerli.infura.io/v3/' + INFURA_PROJECT_ID,
+            name: 'goerli',
+            gas: 1000001,
+            ttl: 31104001,
+            //web3Provider: wallet.provider
           }),
+          /** 
           'did:web': new WebDIDProvider({
             defaultKms: 'local',
           }),
+          */
         },
       }),
       new DIDResolverPlugin({
