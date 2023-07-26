@@ -27,7 +27,8 @@
     "ethr-did-resolver": "^7.0.2",
     "nft.storage": "^7.0.0",
     "sqlite3": "^5.1.2",
-    "web-did-resolver": "^2.0.21"
+    "web-did-resolver": "^2.0.21",
+    "web3": "^1.8.0"
   },
   "type": "module"
 }
