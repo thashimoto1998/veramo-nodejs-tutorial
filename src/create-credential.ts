@@ -2,6 +2,7 @@ import axios from 'axios';
 import { UploadToIPFS } from './uploadIPFS.js';
 import { agent } from './veramo/setup.js'
 import dotenv from 'dotenv';
+import { NftContract } from './blockchain/nftContract.js';
 dotenv.config();
 
 async function main() {
@@ -9,25 +10,16 @@ async function main() {
 
   const verifiableCredential = await agent.createVerifiableCredential({
      credential: {
-       issuer: { id:  'did:ethr:goerli:0x0361fe5fcf149e7abdb8bcfd624bfc8aa2aa71f90b9dbfc3d9c933caf36fad0d3c'},
+       issuer: { id:  'did:ethr:goerli:0x0304ec43e1510029d2bc230d41c17b27a9ac3f132dc254d3453e1f0b6a21f2fdd1'},
        credentialSubject: {
-        contractAddress: '0x00000A',
-        tokenId: '1',
+        contractAddress: '0xd7E08464E8a8451732F0A8212C033f89bB190a5D',
+        tokenId: '2',
         issuerName: 'osaka expo'
       },
     },
     proofFormat: 'jwt',
   })
   console.log(verifiableCredential);
-
-  /** 
-  const verifiableCredential = {
-    issuer: 'aaa',
-    proofFormat: 'jwt'
-  };
-
-  console.log(`New credential created`)
-  console.log(JSON.stringify(verifiableCredential, null, 2))
   
   const uploadToIPFS = new UploadToIPFS(process.env.NFT_STORAGE_KEY!);
   const vcUrl = await uploadToIPFS.uploadVerifiableCredential(JSON.stringify(verifiableCredential));
@@ -36,12 +28,14 @@ async function main() {
   const metadataUrl = await uploadToIPFS.uploadMetadata('test name', 'test description', 'https://test.com/', vcUrl);
   console.log(metadataUrl);
 
-  const metadata = (await axios.get(metadataUrl).catch(() => undefined))?.data;
-  console.log(metadata);
-  const fetchedVC = (await axios.get(metadata.verifiableCredentialUrl).catch(() => undefined))?.data;
-  console.log(fetchedVC);
-  console.log(JSON.parse(fetchedVC));
-  */
+  const nftContract = new NftContract(process.env.PROVIDER_URL!, process.env.PRIVATE_KEY!, '0xd7E08464E8a8451732F0A8212C033f89bB190a5D')
+  nftContract.safeMint('0x88a3473dA09Cc38Ee29aDD599DAbb8E590bA6fF1', 2, metadataUrl);
+
+  // const metadata = (await axios.get(metadataUrl).catch(() => undefined))?.data;
+  // console.log(metadata);
+  // const fetchedVC = (await axios.get(metadata.verifiableCredentialUrl).catch(() => undefined))?.data;
+  // console.log(fetchedVC);
+  // console.log(JSON.parse(fetchedVC));
 }
 
 main().catch(console.log)
