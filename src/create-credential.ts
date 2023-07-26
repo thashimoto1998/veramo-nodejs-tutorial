@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { UploadToIPFS } from './uploadIPFS.js';
 import { agent } from './veramo/setup.js'
 import dotenv from 'dotenv';
@@ -32,7 +33,12 @@ async function main() {
   
   const metadataUrl = await uploadToIPFS.uploadMetadata('test name', 'test description', 'https://test.com/', vcUrl);
   console.log(metadataUrl);
-  
+
+  const metadata = (await axios.get(metadataUrl).catch(() => undefined))?.data;
+  console.log(metadata);
+  const fetchedVC = (await axios.get(metadata.verifiableCredentialUrl).catch(() => undefined))?.data;
+  console.log(fetchedVC);
+  console.log(JSON.parse(fetchedVC));
 }
 
 main().catch(console.log)
